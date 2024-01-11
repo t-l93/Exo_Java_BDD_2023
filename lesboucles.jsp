@@ -116,7 +116,7 @@
 <p>Exemple si l'utilisateur saisie le valeur </p>
 <p>
 <% for (int i = 1; i <= cpt; i++) { %>
-    <%= "valeur x " + i + " = " + (valeur * i) %>
+    <%= valeur + i + " = " + (valeur * i) %>
     <%= "<br>" %>
 <% } %>
 </p>
