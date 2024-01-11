@@ -114,14 +114,12 @@
 <h2>Exercice 7 : La table de multiplication</h2>
 <p>Ecrire le code afin de créser une table de multiplication</p>
 <p>Exemple si l'utilisateur saisie le valeur </p>
-<p>
-<% for (int i = 1; i <= cpt; i++) { %>
-    <%= valeur + i + " = " + (valeur * i) %>
-    <%= "<br>" %>
-<% } %>
-</p>
-<% } %>
-</p>
+ <p>
+        <% for (int i = 1; i <= cpt; i++) { %>
+            <%= valeur + " * " + i + " = " + (valeur * i) %>
+            <%= "<br>" %>
+        <% } %>
+    </p>
 <p><a href="index.html">Retour au sommaire</a></p>
 </body>
 </html>
