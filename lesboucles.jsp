@@ -29,22 +29,12 @@
 <p>Ecrire le code afin de produire un carré d'étoile</p>
 <p>Exemple si l'utilisateur saisie le valeur 5</p>
 <p>
-import java.util.Scanner;
-
-public class CarreEtoiles {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Veuillez saisir une valeur : ");
-        int taille = scanner.nextInt();
-
-        for (int i = 0; i < taille; i++) {
-            for (int j = 0; j < taille; j++) {
-                System.out.print("*");
-            }
-            System.out.println();
-        }
-    }
-} 
+<% for (int i = 1; i <= cpt; i++) { %>
+    <% for (int j = 1; j <= cpt; j++) { %>
+        <%= "*" %>
+    <% } %>
+    <%= "<br>" %>
+<% } %>
 </p>
 
 
@@ -54,86 +44,53 @@ public class CarreEtoiles {
 <p>Exemple si l'utilisateur saisie le valeur 5</p>
 <p>
 <% for (int i = 1; i <= cpt; i++) { %>
-    <% for (int j = 1; j <= cpt; j++) { %>
+    <% for (int j = 1; j <= i; j++) { %>
         <%= "*" %>
     <% } %>
     <%= "<br>" %>
 <% } %>
-
 </p>
 
 <h2>Exercice 3 : Triangle rectangle inversé</h2>
 <p>Ecrire le code afin de produire un triangle rectangle aligné sur la gauche</p>
 <p>Exemple si l'utilisateur saisie le valeur 5</p>
 <p>
-import java.util.Scanner;
-
-public class TriangleInversé {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Veuillez saisir une valeur : ");
-        int taille = scanner.nextInt();
-
-        for (int i = taille; i >= 1; i--) {
-            for (int j = 1; j <= i; j++) {
-                System.out.print("*");
-            }
-            System.out.println();
-        }
-    }
-}
-
+<% for (int i = cpt; i >= 1; i--) { %>
+    <% for (int j = 1; j <= i; j++) { %>
+        <%= "*" %>
+    <% } %>
+    <%= "<br>" %>
+<% } %>
 </p>
 
 <h2>Exercice 4 : Triangle rectangle 2</h2>
 <p>Ecrire le code afin de produire un triangle rectangle aligné sur la droite</p>
 <p>Exemple si l'utilisateur saisie le valeur 5</p>
 <p>
-import java.util.Scanner;
-
-public class TriangleDroite {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Veuillez saisir une valeur : ");
-        int taille = scanner.nextInt();
-
-        for (int i = 1; i <= taille; i++) {
-            for (int j = 1; j <= taille - i; j++) {
-                System.out.print(" ");
-            }
-            for (int k = 1; k <= i; k++) {
-                System.out.print("*");
-            }
-            System.out.println();
-        }
-    }
-}
-
+<% for (int i = 1; i <= cpt; i++) { %>
+    <% for (int j = 1; j <= cpt - i; j++) { %>
+        <%= "&nbsp;" %>
+    <% } %>
+    <% for (int k = 1; k <= i; k++) { %>
+        <%= "*" %>
+    <% } %>
+    <%= "<br>" %>
+<% } %>
 </p>
 
 <h2>Exercice 5 : Triangle isocele</h2>
 <p>Ecrire le code afin de produire un triangle rectangle aligné sur la droite</p>
 <p>Exemple si l'utilisateur saisie le valeur 5</p>
 <p>
-import java.util.Scanner;
-
-public class TriangleIsocele {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Veuillez saisir une valeur : ");
-        int taille = scanner.nextInt();
-
-        for (int i = 1; i <= taille; i++) {
-            for (int j = 1; j <= taille - i; j++) {
-                System.out.print(" ");
-            }
-            for (int k = 1; k <= i; k++) {
-                System.out.print("*");
-            }
-            System.out.println();
-        }
-    }
-}
+<% for (int i = 1; i <= cpt; i++) { %>
+    <% for (int j = 1; j <= cpt - i; j++) { %>
+        <%= "&nbsp;" %>
+    <% } %>
+    <% for (int k = 1; k <= i; k++) { %>
+        <%= "*" %>
+    <% } %>
+    <%= "<br>" %>
+<% } %>
 
 </p>
 
@@ -142,35 +99,25 @@ public class TriangleIsocele {
 <p>Exemple si l'utilisateur saisie le valeur 5</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**</br>&nbsp;&nbsp;&nbsp;&nbsp;***</br>&nbsp;&nbsp;****</br>*****</p>
 <p>
-import java.util.Scanner;
+<% for (int i = 1; i <= cpt; i++) { %>
+    <% for (int j = 1; j <= cpt - i; j++) { %>
+        <%= "&nbsp;" %>
+    <% } %>
+    <% for (int k = 1; k <= i; k++) { %>
+        <%= "*" %>
+    <% } %>
+    <%= "<br>" %>
+<% } %>
 
-public class DemiLosange {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Veuillez saisir une valeur : ");
-        int taille = scanner.nextInt();
-
-        for (int i = 1; i <= taille; i++) {
-            for (int j = 1; j <= taille - i; j++) {
-                System.out.print(" ");
-            }
-            for (int k = 1; k <= i; k++) {
-                System.out.print("*");
-            }
-            System.out.println();
-        }
-
-        for (int i = taille - 1; i >= 1; i--) {
-            for (int j = 1; j <= taille - i; j++) {
-                System.out.print(" ");
-            }
-            for (int k = 1; k <= i; k++) {
-                System.out.print("*");
-            }
-            System.out.println();
-        }
-    }
-}
+<% for (int i = cpt - 1; i >= 1; i--) { %>
+    <% for (int j = 1; j <= cpt - i; j++) { %>
+        <%= "&nbsp;" %>
+    <% } %>
+    <% for (int k = 1; k <= i; k++) { %>
+        <%= "*" %>
+    <% } %>
+    <%= "<br>" %>
+<% } %>
 
 </p>
 
@@ -183,19 +130,10 @@ public class DemiLosange {
 <p>5 x 4 = 20</p>
 <p>5 x 5 = 25</p>
 <p>
-import java.util.Scanner;
-
-public class TableMultiplication {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Veuillez saisir un nombre pour la table de multiplication : ");
-        int nombre = scanner.nextInt();
-
-        for (int i = 1; i <= 10; i++) {
-            System.out.println(nombre + " x " + i + " = " + (nombre * i));
-        }
-    }
-}
+<% for (int i = 1; i <= cpt; i++) { %>
+    <%= "5 x " + i + " = " + (5 * i) %>
+    <%= "<br>" %>
+<% } %>
 </p>
 <% } %>
 <p><a href="index.html">Retour au sommaire</a></p>
