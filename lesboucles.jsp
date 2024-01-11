@@ -13,21 +13,12 @@
 
 <%-- Récupération de la valeur saisie par l'utilisateur --%>
 <% String valeur = request.getParameter("valeur"); %>
-    
+
 <%-- Vérification de l'existence de la valeur --%>
 <% if (valeur != null && !valeur.isEmpty()) { %>
+    <% int n = Integer.parseInt(valeur); %>
 
-<%-- Boucle for pour afficher une ligne d'étoiles --%>
-    <%int cpt = Integer.parseInt(valeur); %>
-    <p>
-    <% for (int i = 1; i <= cpt; i++) { %>
-       <%= "*" %>
-    <% } %>
-    </p>
-
-<h2>Exercice 1 : Le carré d'étoiles</h2>
-<p>Ecrire le code afin de produire un carré d'étoile</p>
-
+    <h2>Exercice 1 : Le carré d'étoiles</h2>
     <p>
     <% for(int i = 0; i < n; i++) {
         for(int j = 0; j < n; j++) {
@@ -37,9 +28,7 @@
     } %>
     </p>
 
-<h2>Exercice 2 : Triangle rectangle gauche</h2>
-<p>Ecrire le code afin de produire un triangle rectangle aligné sur la gauche</p>
-
+    <h2>Exercice 2 : Triangle rectangle gauche</h2>
     <p>
     <% for(int i = 0; i < n; i++) {
         for(int j = 0; j <= i; j++) {
@@ -49,9 +38,7 @@
     } %>
     </p>
 
-<h2>Exercice 3 : Triangle rectangle inversé</h2>
-<p>Ecrire le code afin de produire un triangle rectangle aligné sur la gauche</p>
-
+    <h2>Exercice 3 : Triangle rectangle inversé</h2>
     <p>
     <% for(int i = 0; i < n; i++) {
         for(int j = n; j > i; j--) {
@@ -61,9 +48,7 @@
     } %>
     </p>
 
-<h2>Exercice 4 : Triangle rectangle 2</h2>
-<p>Ecrire le code afin de produire un triangle rectangle aligné sur la droite</p>
-
+    <h2>Exercice 4 : Triangle rectangle aligné à droite</h2>
     <p>
     <% for(int i = 0; i < n; i++) {
         for(int j = 0; j < n-i-1; j++) {
@@ -76,9 +61,7 @@
     } %>
     </p>
 
-<h2>Exercice 5 : Triangle isocele</h2>
-<p>Ecrire le code afin de produire un triangle rectangle aligné sur la droite</p>
-
+    <h2>Exercice 5 : Triangle isocèle</h2>
     <p>
     <% for(int i = 0; i < n; i++) {
         for(int j = 0; j < n-i-1; j++) {
@@ -91,9 +74,7 @@
     } %>
     </p>
 
-<h2>Exercice 6 : Le demi losange</h2>
-<p>Ecrire le code afin de produire un losange</p>
-
+    <h2>Exercice 6 : Le demi-losange</h2>
     <p>
     <% for(int i = 0; i < n; i++) {
         for(int j = 0; j < n-i-1; j++) {
@@ -115,9 +96,7 @@
     } %>
     </p>
 
-<h2>Exercice 7 : La table de multiplication</h2>
-<p>Ecrire le code afin de créser une table de multiplication</p>
-
+    <h2>Exercice 7 : La table de multiplication</h2>
     <p>
     <% for(int i = 1; i <= n; i++) {
         out.println(n + " x " + i + " = " + (n * i) + "<br>");
