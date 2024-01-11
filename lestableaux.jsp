@@ -1,48 +1,92 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
 <head>
-<title>Les tableaux</title>
+<title>Les Tableaux</title>
 </head>
 <body bgcolor=white>
 <h1>Exercices sur les tableaux</h1>
 <form action="#" method="post">
-    <p>Saisir au minimu 3 chiffres à la suite, exemple : 6 78 15 <input type="text" id="inputValeur" name="chaine">
+    <p>Saisir au minimum 3 chiffres à la suite, exemple : 6 78 15 <input type="text" name="chaine">
     <p><input type="submit" value="Afficher">
 </form>
-<%-- Récupération des valeurs --%>
-    <% String chaine = request.getParameter("chaine"); %>
-    
-    <% if (chaine != null) { %>
+<%-- Récupération de la chaine saisie --%>
+<% String chaine = request.getParameter("chaine"); %>
 
-    <%-- Division de la chaîne de chiffres séparés par des espaces --%>
-    <% String[] tableauDeChiffres = chaine.split("\\s+"); %>
-    <p>La tableau contient <%= tableauDeChiffres.length %> valeurs</br>
-    Chiffre 1 : <%= Integer.parseInt(tableauDeChiffres[0]) %></br>
-    Chiffre 2 : <%= Integer.parseInt(tableauDeChiffres[1]) %></br>
-    Chiffre 3 : <%= Integer.parseInt(tableauDeChiffres[2]) %></p>
-    
-<h2>Exercice 1 : La carré de la première valeur</h2>
-<p>Ecrire un programme afin d'afficher le carré de la première valeur</p>
+<% if (chaine != null && !chaine.isEmpty()) { %>
+    <% String[] tableauDeChiffres = chaine.split("\\s+");
+       int[] valeurs = new int[tableauDeChiffres.length];
+       for (int i = 0; i < tableauDeChiffres.length; i++) {
+           valeurs[i] = Integer.parseInt(tableauDeChiffres[i]);
+       }
+    %>
+    <p>Le tableau contient <%= valeurs.length %> valeurs</br>
+    <% for (int i = 0; i < valeurs.length; i++) { %>
+        Chiffre <%= i + 1 %>: <%= valeurs[i] %></br>
+    <% } %>
 
-<h2>Exercice 2 : La somme des 2 premières valeurs</h2>
-<p>Ecrire un programme afin d'afficher la somme des deux premières valeurs</p>
+    <h2>Exercice 1 : Le carré de la première valeur</h2>
+    <p>Carré de la première valeur : <%= valeurs[0] * valeurs[0] %></p>
 
-<h2>Exercice 3 : La somme de toutes les valeurs</h2>
-<p>L'utilisateur peut à présent saisir autant de valeurs qu'il le souhaite dans champs de saisie.</br>
-Ecrire un programme afin de faire la somme de toutes les valeurs saisie par l'utilisateur</p>
+    <h2>Exercice 2 : La somme des 2 premières valeurs</h2>
+    <p>Somme des deux premières valeurs : <%= valeurs[0] + valeurs[1] %></p>
 
-<h2>Exercice 4 : La valeur maximum</h2>
-<p>Ecrire un programme pour afficher la valeur maximale saisie par l'utilisateur</p>
+    <h2>Exercice 3 : La somme de toutes les valeurs</h2>
+    <p>
+    <% int somme = 0;
+       for (int valeur : valeurs) {
+           somme += valeur;
+       }
+    %>
+    Somme de toutes les valeurs : <%= somme %>
+    </p>
 
-<h2>Exercice 5 : La valeur minimale</h2>
-<p>Ecrire un programme pour afficher la valeur minimale saisie par l'utilisateur</p>
+    <h2>Exercice 4 : La valeur maximum</h2>
+    <p>
+    <% int max = valeurs[0];
+       for (int valeur : valeurs) {
+           if (valeur > max) {
+               max = valeur;
+           }
+       }
+    %>
+    Valeur maximale : <%= max %>
+    </p>
 
-<h2>Exercice 6 : La valeur le plus proche de 0</h2>
-<p>Trouvez la valeur la plus proche de 0 (chiffres positifs ou négatifs)</p>
+    <h2>Exercice 5 : La valeur minimale</h2>
+    <p>
+    <% int min = valeurs[0];
+       for (int valeur : valeurs) {
+           if (valeur < min) {
+               min = valeur;
+           }
+       }
+    %>
+    Valeur minimale : <%= min %>
+    </p>
 
-<h2>Exercice 7 : La valeur le plus proche de 0 (2° version)</h2>
-<p>Trouvez la valeur la plus proche de 0 (chiffres positifs ou négatifs)</p>
-<p>En cas d'égalité entre un chiffre positif et négatif, affichez le chiffre positif</p>
+    <h2>Exercice 6 : La valeur la plus proche de 0</h2>
+    <p>
+    <% int plusProcheDeZero = valeurs[0];
+       for (int valeur : valeurs) {
+           if (Math.abs(valeur) < Math.abs(plusProcheDeZero)) {
+               plusProcheDeZero = valeur;
+           }
+       }
+    %>
+    Valeur la plus proche de 0 : <%= plusProcheDeZero %>
+    </p>
+
+    <h2>Exercice 7 : La valeur la plus proche de 0</h2>
+    <p>
+    <% int plusProcheDeZeroV2 = valeurs[0];
+       for (int valeur : valeurs) {
+           if (Math.abs(valeur) < Math.abs(plusProcheDeZeroV2) || (Math.abs(valeur) == Math.abs(plusProcheDeZeroV2) && valeur > plusProcheDeZeroV2)) {
+               plusProcheDeZeroV2 = valeur;
+           }
+       }
+    %>
+    Valeur la plus proche de 0 : <%= plusProcheDeZeroV2 %>
+    </p>
 
 <% } %>
 <p><a href="index.html">Retour au sommaire</a></p>
