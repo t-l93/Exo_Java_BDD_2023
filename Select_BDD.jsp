@@ -23,7 +23,7 @@
         PreparedStatement pstmt = conn.prepareStatement(sql);
         ResultSet rs = pstmt.executeQuery();
 
-        // Afficher les résultats (à adapter selon vos besoins)
+        // Afficher les résultats 
         while (rs.next()) {
             String colonne1 = rs.getString("idFilm");
             String colonne2 = rs.getString("titre");
@@ -104,6 +104,42 @@
 
 <h2>Exercice 3 : Modification du titre du film</h2>
 <p>Créer un fichier permettant de modifier le titre d'un film sur la base de son ID (ID choisi par l'utilisateur)</p>
+
+<form action="#" method="post">
+    <label for="inputFilmId">Saisissez l'ID du film à modifier : </label>
+    <input type="text" id="inputFilmId" name="filmId">
+    <label for="inputNouveauTitre">Saisissez le nouveau titre : </label>
+    <input type="text" id="inputNouveauTitre" name="nouveauTitre">
+    <input type="submit" value="Modifier le titre">
+</form>
+<p>
+<%
+    // Récupération des paramètres saisis par l'utilisateur
+    String filmIdStr = request.getParameter("filmId");
+    String nouveauTitre = request.getParameter("nouveauTitre");
+
+    if (filmIdStr != null && nouveauTitre != null && !filmIdStr.isEmpty() && !nouveauTitre.isEmpty()) {
+        int filmId = Integer.parseInt(filmIdStr);
+
+        String sqlExercice3 = "UPDATE Film SET titre = ? WHERE idFilm = ?";
+        PreparedStatement pstmtExercice3 = conn.prepareStatement(sqlExercice3);
+        pstmtExercice3.setString(1, nouveauTitre);
+        pstmtExercice3.setInt(2, filmId);
+
+        int rowsAffected = pstmtExercice3.executeUpdate();
+
+        if (rowsAffected > 0) {
+            out.println("<p>Le titre du film avec l'ID " + filmId + " a été modifié avec succès.</p>");
+        } else {
+            out.println("<p>Aucun film trouvé avec l'ID " + filmId + ".</p>");
+        }
+
+        // Fermer exercice 3
+        pstmtExercice3.close();
+    }
+%>
+</p>
+
 
 <h2>Exercice 4 : La valeur maximum</h2>
 <p>Créer un formulaire pour saisir un nouveau film dans la base de données</p>
