@@ -53,22 +53,12 @@ public class CarreEtoiles {
 <p>Ecrire le code afin de produire un triangle rectangle aligné sur la gauche</p>
 <p>Exemple si l'utilisateur saisie le valeur 5</p>
 <p>
-import java.util.Scanner;
-
-public class TriangleGauche {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Veuillez saisir une valeur : ");
-        int taille = scanner.nextInt();
-
-        for (int i = 1; i <= taille; i++) {
-            for (int j = 1; j <= i; j++) {
-                System.out.print("*");
-            }
-            System.out.println();
-        }
-    }
-}
+<% for (int i = 1; i <= cpt; i++) { %>
+    <% for (int j = 1; j <= cpt; j++) { %>
+        <%= "*" %>
+    <% } %>
+    <%= "<br>" %>
+<% } %>
 
 </p>
 
