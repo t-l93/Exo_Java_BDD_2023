@@ -115,10 +115,7 @@
 <p>Ecrire le code afin de créser une table de multiplication</p>
 <p>Exemple si l'utilisateur saisie le valeur </p>
  <p>
-        <% for (int i = 1; i <= cpt; i++) { %>
-            <%= 5 + " * " + i + " = " + (5 * i) %>
-            <%= "<br>" %>
-        <% } %>
+      
     </p>
 <p><a href="index.html">Retour au sommaire</a></p>
 </body>
