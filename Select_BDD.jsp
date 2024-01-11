@@ -73,6 +73,35 @@
 <h2>Exercice 2 : Année de recherche</h2>
 <p>Créer un champ de saisie permettant à l'utilisateur de choisir l'année de sa recherche.</p>
 
+<form action="#" method="post">
+    <p>Saisir une année : <input type="text" id="inputValeur" name="annee">
+    <p><input type="submit" value="Afficher">
+</form>
+
+
+<%
+    String annee = request.getParameter("annee");
+
+    if (annee != null) { 
+        conn = DriverManager.getConnection(url, user, password);
+        String sqlRechercheAnnee = "SELECT idFilm, titre, année FROM Film WHERE année = " + annee;
+        pstmt = conn.prepareStatement(sqlRechercheAnnee);
+        rs = pstmt.executeQuery();
+
+        while (rs.next()) {
+            String colonne1Annee = rs.getString("idFilm");
+            String colonne2Annee = rs.getString("titre");
+            String colonne3Annee = rs.getString("année");
+            out.println("id : " + colonne1Annee + ", titre : " + colonne2Annee + ", année : " + colonne3Annee + "</br>");
+        }
+ 
+        rs.close();
+        pstmt.close();
+        conn.close();
+    }
+
+%>
+
 <h2>Exercice 3 : Modification du titre du film</h2>
 <p>Créer un fichier permettant de modifier le titre d'un film sur la base de son ID (ID choisi par l'utilisateur)</p>
 
